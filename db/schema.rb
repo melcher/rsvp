@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150126005445) do
+ActiveRecord::Schema.define(version: 20150126004705) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "invitations", force: :cascade do |t|
     t.string   "name"
@@ -21,7 +24,7 @@ ActiveRecord::Schema.define(version: 20150126005445) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "invitations", ["name"], name: "index_invitations_on_name", unique: true
+  add_index "invitations", ["name"], name: "index_invitations_on_name", unique: true, using: :btree
 
   create_table "responses", force: :cascade do |t|
     t.integer  "party_size"
@@ -33,6 +36,7 @@ ActiveRecord::Schema.define(version: 20150126005445) do
     t.datetime "updated_at",        null: false
   end
 
-  add_index "responses", ["invitation_id"], name: "index_responses_on_invitation_id"
+  add_index "responses", ["invitation_id"], name: "index_responses_on_invitation_id", using: :btree
 
+  add_foreign_key "responses", "invitations"
 end

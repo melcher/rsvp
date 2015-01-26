@@ -5,7 +5,7 @@ class CreateResponses < ActiveRecord::Migration
       t.text :comment
       t.text :food_restrictions
       t.string :responded_with
-      t.references :invitations, index: true
+      t.references :invitation, index: true
 
       t.timestamps null: false
     end

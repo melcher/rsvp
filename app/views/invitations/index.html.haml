@@ -3,10 +3,9 @@
   .well.well-sm
     %h1 Please RSVP right now!
 
-    = form_tag('/invitations', remote: true) do |f|
+    = form_tag('/invitations/search', method: :get, remote: true) do |f|
       .form-group
         %label(for='q') Search for your party's name
-        = text_field_tag('q', '', placeholder: "You party's name", class: 'form-control')
         %input.form-control(type='search' placeholder="You party's name" name='q')
       .form-group
         %button.btn.btn-primary(type='submit') Find my RSVP
