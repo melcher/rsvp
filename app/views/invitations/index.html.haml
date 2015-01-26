@@ -1,25 +1,12 @@
-%h1 Listing invitations
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Party size
-      %th Email
-      %th
-      %th
-      %th
-      
-  %tbody
-    - @invitations.each do |invitation|
-      %tr
-        %td= invitation.name
-        %td= invitation.party_size
-        %td= invitation.email
-        %td= link_to 'Show', invitation
-        %td= link_to 'Edit', edit_invitation_path(invitation)
-        %td= link_to 'Destroy', invitation, :method => :delete, :data => { :confirm => 'Are you sure?' }
+.col-sm-offset-2.col-sm-8
+  .well.well-sm
+    %h1 Please RSVP right now!
 
-%br
-
-= link_to 'New Invitation', new_invitation_path
+    = form_tag('/invitations', remote: true) do |f|
+      .form-group
+        %label(for='q') Search for your party's name
+        = text_field_tag('q', '', placeholder: "You party's name", class: 'form-control')
+        %input.form-control(type='search' placeholder="You party's name" name='q')
+      .form-group
+        %button.btn.btn-primary(type='submit') Find my RSVP
