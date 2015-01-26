@@ -8,14 +8,14 @@ RSpec.describe "responses/index", :type => :view do
         :comment => "MyText",
         :food_restrictions => "MyText",
         :responded_with => "Responded With",
-        :invitations => nil
+        :invitation => nil
       ),
       Response.create!(
         :party_size => 1,
         :comment => "MyText",
         :food_restrictions => "MyText",
         :responded_with => "Responded With",
-        :invitations => nil
+        :invitation => nil
       )
     ])
   end

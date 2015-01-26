@@ -7,6 +7,9 @@
           %li= msg
 
   .field
+    = f.label :invitation
+    = f.text_field :invitation
+  .field
     = f.label :party_size
     = f.number_field :party_size
   .field
@@ -18,8 +21,5 @@
   .field
     = f.label :responded_with
     = f.text_field :responded_with
-  .field
-    = f.label :invitations
-    = f.text_field :invitations
   .actions
     = f.submit 'Save'

@@ -7,7 +7,7 @@ RSpec.describe "responses/show", :type => :view do
       :comment => "MyText",
       :food_restrictions => "MyText",
       :responded_with => "Responded With",
-      :invitations => nil
+      :invitation => nil
     ))
   end
 

@@ -7,7 +7,7 @@ RSpec.describe "responses/new", :type => :view do
       :comment => "MyText",
       :food_restrictions => "MyText",
       :responded_with => "MyString",
-      :invitations => nil
+      :invitation => nil
     ))
   end
 
@@ -24,7 +24,7 @@ RSpec.describe "responses/new", :type => :view do
 
       assert_select "input#response_responded_with[name=?]", "response[responded_with]"
 
-      assert_select "input#response_invitations_id[name=?]", "response[invitations_id]"
+      assert_select "input#response_invitation_id[name=?]", "response[invitation_id]"
     end
   end
 end

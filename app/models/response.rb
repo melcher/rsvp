@@ -1,3 +1,3 @@
 class Response < ActiveRecord::Base
-  belongs_to :invitations
+  belongs_to :invitation
 end
