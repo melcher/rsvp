@@ -19,6 +19,10 @@ en:
     #       email: 'E-mail to sign in.'
     #     edit:
     #       email: 'E-mail.'
+    labels:
+      response:
+        new:
+          responded_with: 'Can you come?'
     # hints:
     #   defaults:
     #     username: 'User name to sign in.'

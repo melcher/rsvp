@@ -4,16 +4,20 @@ class InvitationsController < ApplicationController
   # GET /invitations
   # GET /invitations.json
   def index
+    if params[:q]
+      @invitations = Invitation.where("name ilike ?", "%#{params[:q]}%")
+      if @invitations.length == 1
+        respond_to do |format|
+          format.html { redirect_to @invitations.first, notice: 'Invitation found!' }
+          format.json { render :show, status: :ok, location: @invitations.first }
+        end
+      end
+    end
   end
 
   # GET /invitations
   # GET /invitations.json
   def search
-    @invitations = Invitation.where("name ilike ?", "%#{params[:q]}%")
-    if @invitations.length == 1
-      format.html { redirect_to @invitation, notice: 'Invitation was successfully updated.' }
-      format.json { render :show, status: :ok, location: @invitation }
-    end
   end
 
   # GET /invitations/1

@@ -1,11 +1,12 @@
+.well.well-sm
+  %h1 Please RSVP right now!
 
-.col-sm-offset-2.col-sm-8
-  .well.well-sm
-    %h1 Please RSVP right now!
-
-    = form_tag('/invitations/search', method: :get, remote: true) do |f|
-      .form-group
-        %label(for='q') Search for your party's name
-        %input.form-control(type='search' placeholder="You party's name" name='q')
-      .form-group
-        %button.btn.btn-primary(type='submit') Find my RSVP
+  = form_tag('/invitations', method: :get) do |f|
+    - if @invitations
+      .alert.alert-info
+        We weren't able to find your invitation, please try again
+    .form-group
+      %label(for='q') Search for your party's name
+      %input.form-control(type='search' placeholder="You party's name" name='q')
+    .form-group
+      %button.btn.btn-primary(type='submit') Find my RSVP

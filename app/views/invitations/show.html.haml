@@ -10,6 +10,8 @@
   %b Email:
   = @invitation.email
 
+= link_to 'Create response', new_invitation_response_path(@invitation)
+
 = link_to 'Edit', edit_invitation_path(@invitation)
 \|
 = link_to 'Back', invitations_path

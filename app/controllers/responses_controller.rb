@@ -14,7 +14,7 @@ class ResponsesController < ApplicationController
 
   # GET /responses/new
   def new
-    @response = Response.new
+    @response = find_invitation.build_response()
   end
 
   # GET /responses/1/edit
@@ -24,7 +24,7 @@ class ResponsesController < ApplicationController
   # POST /responses
   # POST /responses.json
   def create
-    @response = Response.new(response_params)
+    @response = find_invitation.build_response(response_params)
 
     respond_to do |format|
       if @response.save
@@ -62,6 +62,9 @@ class ResponsesController < ApplicationController
   end
 
   private
+    def find_invitation
+      @invitation = Invitation.find(params[:invitation_id])
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_response
       @response = Response.find(params[:id])
