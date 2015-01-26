@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @invitation.name
+%p
+  %b Party size:
+  = @invitation.party_size
+%p
+  %b Email:
+  = @invitation.email
+
+= link_to 'Edit', edit_invitation_path(@invitation)
+\|
+= link_to 'Back', invitations_path
