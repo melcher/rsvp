@@ -1,15 +1,27 @@
 = simple_form_for @response do |f|
   .form-group
-    .form-control-static We've reserved #{@response.invitation.party_size} seates for you!
+    .form-control-static We've reserved #{@response.invitation.party_size} seats for you!
   - if @response.errors.any?
     #error_explanation
       %h2= "#{pluralize(@response.errors.count, "error")} prohibited this response from being saved:"
       %ul
         - @response.errors.full_messages.each do |msg|
           %li= msg
-  = f.input :responded_with, as: :radio_buttons
-  - if @response.invitation.party_size > 1
-    = f.input :party_size, collection: 1..@response.invitation.party_size, prompt: "How many will be attending?"
+  = f.input :responded_with, collection: Response.possible_responses, label: 'Are you able to attend?', as: :radio_buttons
+  .attending-wrapper.hidden
+    - if @response.invitation.party_size > 1
+      = f.input :party_size, collection: 1..@response.invitation.party_size, label: 'How many in your party?', include_blank: false
+    .form-group.radio_buttons.optional.food_restrictions_toggle
+      %label.radio_buttons.optional.control-label
+        Any food restrictions?
+      %span.radio
+        %label(for='response_food_restrictions_toggle_true')
+          %input.radio_buttons.optional(type="radio" value="true" name="food_restrictions" id="response_food_restrictions_toggle_true")
+          Yes
+      %span.radio
+        %label(for='response_food_restrictions_toggle_false')
+          %input.radio_buttons.optional(type="radio" value="false" name="food_restrictions" id="response_food_restrictions_toggle_false")
+          No
+    = f.input :food_restrictions, label: "Please describe"
   = f.input :comment
-  = f.input :food_restrictions, as: :radio_buttons
   = f.button :submit

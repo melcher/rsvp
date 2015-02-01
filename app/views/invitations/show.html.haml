@@ -1,17 +1,8 @@
-%p#notice= notice
+.well.invitation-response
+  %h1 RSVP for #{@response.invitation.name}
 
-%p
-  %b Name:
-  = @invitation.name
-%p
-  %b Party size:
-  = @invitation.party_size
-%p
-  %b Email:
-  = @invitation.email
+  = render 'responses/form'
 
-= link_to 'Create response', new_invitation_response_path(@invitation)
-
-= link_to 'Edit', edit_invitation_path(@invitation)
-\|
-= link_to 'Back', invitations_path
+  Not you? Go
+  = link_to 'Back', invitations_path
+  and try to search again

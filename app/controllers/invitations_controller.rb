@@ -4,25 +4,31 @@ class InvitationsController < ApplicationController
   # GET /invitations
   # GET /invitations.json
   def index
-    if params[:q]
-      @invitations = Invitation.where("name ilike ?", "%#{params[:q]}%")
-      if @invitations.length == 1
-        respond_to do |format|
-          format.html { redirect_to @invitations.first, notice: 'Invitation found!' }
-          format.json { render :show, status: :ok, location: @invitations.first }
-        end
-      end
-    end
   end
 
   # GET /invitations
   # GET /invitations.json
   def search
+    @invitation = Invitation.for(params[:q])
+    if @invitation
+      if @invitation.responded?
+        render :responded
+      else
+        respond_to do |format|
+          format.html { redirect_to @invitation, notice: 'Invitation found!' }
+          format.json { render :show, status: :ok, location: @invitation }
+        end
+      end
+    else
+      flash[:notice] = "We weren't able to find your reservation, please try again!"
+      render :index
+    end
   end
 
   # GET /invitations/1
   # GET /invitations/1.json
   def show
+    @response = Response.from_invitation(@invitation)
   end
 
   # GET /invitations/new
