@@ -15,7 +15,7 @@ class InvitationsController < ApplicationController
         render :responded
       else
         respond_to do |format|
-          format.html { redirect_to @invitation, notice: 'Invitation found!' }
+          format.html { redirect_to @invitation }
           format.json { render :show, status: :ok, location: @invitation }
         end
       end
