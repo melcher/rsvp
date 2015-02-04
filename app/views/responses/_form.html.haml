@@ -1,4 +1,4 @@
-= simple_form_for @response do |f|
+= simple_form_for [@invitation, @response] do |f|
   .form-group
     .form-control-static We've reserved #{@response.invitation.party_size} seats for you!
   - if @response.errors.any?
