@@ -1,3 +1,4 @@
+ruby '2.1.1'
 source 'https://rubygems.org'
 
 
@@ -13,6 +14,8 @@ gem 'bootstrap-sass', '~> 3.3.3'
 gem 'simple_form'
 
 gem 'pg'
+
+gem 'rails_12factor' # For heroku
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
