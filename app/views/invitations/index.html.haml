@@ -1,11 +1,9 @@
-.well.well-sm
-  %h1 Please RSVP right now!
-  - if flash[:notice]
-    .alert.alert-info
-      = flash[:notice]
-  = form_tag('/invitations/search', method: :get) do |f|
-    .form-group
-      %label(for='q') Search for your party's name
-      %input.form-control(type='search' placeholder="You party's name" name='q')
-    .form-group
-      %button.btn.btn-primary(type='submit') Find my RSVP
+- if flash[:notice]
+  .alert.alert-info
+    = flash[:notice]
+= form_tag('/invitations/search', method: :get) do |f|
+  .form-group
+    %label(for='q') Search for your party's name
+    %input.form-control(type='search' placeholder="You party's name" name='q')
+  .form-group
+    %button.btn.btn-primary(type='submit') Find my RSVP
