@@ -17,6 +17,8 @@ gem 'pg'
 
 gem 'rails_12factor' # For heroku
 
+gem 'puma' # Use puma in production (heroku)
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
