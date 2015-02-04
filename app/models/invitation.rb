@@ -2,8 +2,10 @@ class Invitation < ActiveRecord::Base
   has_one :response
 
   def self.for(name)
-    query = '%' + name.to_s.split.join('%') + '%'
-    results = where("name ilike ?", query)
+    terms = name.to_s.split
+    results = terms.inject(self) do |query, term|
+      query.where("name ilike ?", "%#{term}%")
+    end
     results.first if results.length == 1
   end
 
