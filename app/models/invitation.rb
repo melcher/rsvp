@@ -4,6 +4,7 @@ class Invitation < ActiveRecord::Base
   def self.for(name)
     terms = name.to_s.split
     results = terms.inject(self) do |query, term|
+      next if (term == 'and' || term == '&')
       query.where("name ilike ?", "%#{term}%")
     end
     results.first if results.length == 1
