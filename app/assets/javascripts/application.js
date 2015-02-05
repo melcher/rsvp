@@ -20,6 +20,7 @@
 $(function(){
   'use_strict';
   $('.hidden').hide().removeClass('hidden');
+  $('.search').focus().select();
   $('.response_food_restrictions').hide();
   $(document).on('change', '.response_responded_with', function(event){
     var value = $(event.target).val();

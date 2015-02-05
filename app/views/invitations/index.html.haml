@@ -4,6 +4,6 @@
 = form_tag('/invitations/search', method: :get) do |f|
   .form-group
     %label(for='q') Search for your party's name
-    %input.form-control(type='search' placeholder="Graham &amp; Jess" name='q')
+    %input.search.form-control(type='search' placeholder="Graham & Jess" name='q' value="#{params[:q]}")
   .form-group
     %button.btn.btn-primary(type='submit') Find my RSVP
