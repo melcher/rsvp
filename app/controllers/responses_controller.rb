@@ -1,5 +1,6 @@
 class ResponsesController < ApplicationController
   before_action :set_response, only: [:show, :edit, :update, :destroy]
+  before_filter :find_invitation, only: [:create, :new]
 
   # GET /responses
   # GET /responses.json
@@ -14,7 +15,7 @@ class ResponsesController < ApplicationController
 
   # GET /responses/new
   def new
-    @response = find_invitation.to_response
+    @response = @invitation.to_response
   end
 
   # GET /responses/1/edit
@@ -24,7 +25,7 @@ class ResponsesController < ApplicationController
   # POST /responses
   # POST /responses.json
   def create
-    @response = @invitation.response || find_invitation.to_response(response_params)
+    @response = @invitation.response || @invitation.to_response(response_params)
     respond_to do |format|
       if @response.save
         format.html { redirect_to @response }
