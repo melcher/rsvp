@@ -28,7 +28,11 @@ class InvitationsController < ApplicationController
   # GET /invitations/1
   # GET /invitations/1.json
   def show
-    @response = Response.from_invitation(@invitation)
+    if @invitation.response
+      redirect_to invitations_url, notice: 'Invitation has already been responded to.'
+      return
+    end
+    @response = @invitation.to_response
   end
 
   # GET /invitations/new

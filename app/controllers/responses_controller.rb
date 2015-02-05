@@ -14,7 +14,7 @@ class ResponsesController < ApplicationController
 
   # GET /responses/new
   def new
-    @response = find_invitation.build_response()
+    @response = find_invitation.to_response
   end
 
   # GET /responses/1/edit
@@ -24,8 +24,7 @@ class ResponsesController < ApplicationController
   # POST /responses
   # POST /responses.json
   def create
-    @response = find_invitation.build_response(response_params)
-
+    @response = @invitation.response || find_invitation.to_response(response_params)
     respond_to do |format|
       if @response.save
         format.html { redirect_to @response }

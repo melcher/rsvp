@@ -13,6 +13,10 @@ class Invitation < ActiveRecord::Base
     !!response
   end
 
+  def to_response(params = {})
+    build_response(response_defaults.merge(params))
+  end
+
   def response_defaults
     attributes.slice('party_size')
   end

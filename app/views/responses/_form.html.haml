@@ -1,6 +1,7 @@
 = simple_form_for [@invitation, @response] do |f|
-  .form-group
-    .form-control-static We've reserved #{@response.invitation.party_size} seats for you!
+  - if @response.invitation.party_size > 1
+    .form-group
+      .form-control-static We've reserved #{pluralize @response.invitation.party_size, 'seat'} for you!
   - if @response.errors.any?
     #error_explanation
       %h2= "#{pluralize(@response.errors.count, "error")} prohibited this response from being saved:"
