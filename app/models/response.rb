@@ -8,7 +8,7 @@ end
 class Response < ActiveRecord::Base
   belongs_to :invitation
 
-  validates :responded_with, presence: true
+  validates :responded_with, :invitation, presence: true
   validates :party_size, :numericality => { :less_than_or_equal_to => 100 }
 
   validate :party_size_isnt_too_big
@@ -28,4 +28,7 @@ class Response < ActiveRecord::Base
     end
   end
 
+  def name
+    invitation.name
+  end
 end

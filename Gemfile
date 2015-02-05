@@ -14,6 +14,10 @@ gem 'simple_form'
 
 gem 'pg'
 
+gem 'devise'
+
+gem 'activeadmin', github: 'activeadmin'
+
 gem 'rails_12factor' # For heroku
 
 gem 'puma' # Use puma in production (heroku)

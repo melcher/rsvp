@@ -1,5 +1,9 @@
 class Invitation < ActiveRecord::Base
-  has_one :response
+  has_one :response, dependent: :destroy
+
+  scope :no_response, -> { includes(:response).references(:responses).where(responses: {id: nil}) }
+  scope :responded, -> { joins(:response) }
+
 
   def self.for(name)
     terms = name.to_s.split
