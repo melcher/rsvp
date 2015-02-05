@@ -1,6 +1,7 @@
 ActiveAdmin.register Invitation do
   includes :response
-  scope :no_response, :responded
+  scope :no_response
+  scope :responded
 
   index do
     selectable_column
