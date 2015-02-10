@@ -19,6 +19,17 @@ ActiveAdmin.register Invitation do
     actions
   end
 
+  form do |f|
+    f.semantic_errors
+    f.inputs do
+      f.input :name
+      f.input :email
+      f.input :party_size, as: :select, collection: 0..10
+    end
+    f.actions
+  end
+
+  permit_params :name, :email, :party_size
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
