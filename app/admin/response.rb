@@ -22,7 +22,7 @@ ActiveAdmin.register Response do
     f.semantic_errors
     f.inputs do
       f.input :invitation, as: :select, collection: Invitation.all.map{|i| [i.name, i.id] }, :input_html => { disabled: f.object.persisted? }
-      f.input :party_size, as: :select, collection: 0..(f.object.invitation.try(:party_size))
+      f.input :party_size, as: :select, collection: 0..(f.object.invitation.try(:party_size) || 10)
       f.input :responded_with, :as => :select, :collection => Response.possible_responses.map {|response| [response.name, response.id] }
       f.input :comment, as: :string
       f.input :food_restrictions, as: :string

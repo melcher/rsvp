@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   private
 
   def allow_iframe
-    response.headers['X-Frame-Options'] = 'ALLOW-FROM https://www.grahamheartsjesss.com'
+    response.headers['X-Frame-Options'] = 'ALLOW-FROM http://www.grahamheartsjess.com'
   end
 
 end
