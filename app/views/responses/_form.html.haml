@@ -23,6 +23,12 @@
         %label(for='response_food_restrictions_toggle_false')
           %input.radio_buttons.optional(type="radio" value="false" name="food_restrictions" id="response_food_restrictions_toggle_false")
           No
+
     = f.input :food_restrictions, label: "Please describe"
+    - if false
+      = f.label :plan_to_bus, label: "The Bus from SF"
+      = f.input :plan_to_bus, label: "Count me in for the SF Bus!", hint: "We've hired a wedding bus that will pick up at a TBD location (probably near Powell Bart) at 3pm and drop-off again after the wedding, probably around 11pm."
+
+      = f.input :plan_to_bus, as: :radio_buttons, collection: [['Yup', true], ['Nope', false]], label: "Will you be taking the bus from SF?", hint: "We've hired a wedding bus that will pick up at a TBD location (probably near Powell Bart) at 3pm and drop-off again after the wedding, probably around 11pm."
   = f.input :comment
   = f.button :submit

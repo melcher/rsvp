@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150205034439) do
+ActiveRecord::Schema.define(version: 20150216181718) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,8 +65,9 @@ ActiveRecord::Schema.define(version: 20150205034439) do
     t.text     "food_restrictions"
     t.string   "responded_with"
     t.integer  "invitation_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.boolean  "plan_to_bus",       default: false
   end
 
   add_index "responses", ["invitation_id"], name: "index_responses_on_invitation_id", using: :btree

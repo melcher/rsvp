@@ -2,6 +2,8 @@ class ResponsesController < ApplicationController
   before_action :set_response, only: [:show, :edit, :update, :destroy]
   before_filter :find_invitation, only: [:create, :new]
 
+  skip_filter :verify_authenticity_token
+
   # GET /responses
   # GET /responses.json
   def index
